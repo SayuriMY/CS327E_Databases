@@ -1,0 +1,26 @@
+Iowa Alcohol Sales - https://data.iowa.gov/Economy/Iowa-Liquor-Sales/m3tr-qhgy   
+The original dataset contains the spirits purchase information of Iowa Class “E” liquor licensees by product and date of purchase  
+from January 1, 2012 to current. We used PostgreSQL to cut the data from 2012-18 to 2014 & 2015.  
+
+We added a "TempKey" Column to the Sales table to add a primary key using this Query:
+Select row_number() over (order by COALESCE(County,'X-Unassigned'), ItemNum, Sale_Dollars_) as TempKey,  
+  ItemNum, StoreNum, COALESCE(County,'X-Unassigned') as County, 
+  Sale_Dollars_, VolSold_L_, BottlesSold
+From IowaAlcoholSales.2014Sales
+
+Liquor Liscense Revocations - http://db.desmoinesregister.com/owi-revocations-by-county  
+This dataset contains data about the number of driver license revocations for operating while intoxicated from 2000 to 2015.  
+
+Drunk Driving Deaths - http://www.countyhealthrankings.org/app/iowa/2014/measure/factors/134/data  
+This dataset contains data about motor vehicle crash deaths with alcohol involvement.  
+
+These three datasets are able to be connected through the year 2014, 2015 and Counties.   
+We will be trying to see the relationship between the purchases of alcohol, driver license revocations for operating while 
+intoxicated and motor vehicle crash deaths with alcohol involvement, all in Iowa and sorted by their counties.  
+
+Big Questions:   
+Do the ratios between Population, Alcohol Sales, and Motor Vehicle Crash Deaths with alcohol involvement per county differ by a   
+wide range or are they consistent throughout the state of Iowa?  
+Are the ratios between Vehicle Crash Deaths with alcohol involvement and driver license revocations per county differ by a wide   
+range or are they consistent throughout the state of Iowa?  
+Are there differences between the years 2014 and 2015?  

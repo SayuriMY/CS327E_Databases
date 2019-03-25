@@ -1,0 +1,62 @@
+1. Briefly describe what results the query will produce and what SQL operations it will use to produce those results (1-2 sentences).
+2. Briefly describe what type(s) of transforms to the data are required to successfully implement the query (1-2 sentences).
+
+---Query #1
+Results: Results: Table containing alcohol sales and % alcohol impaired deaths from counties were 85%, 95%, and 99% deaths caused by alcohol impaired driving in 2014 and 2015.
+
+Type of transformations required by the data: 
+-Use ParDo to normalize County feature in all datasets. 
+
+Python scripts:
+-ParDo_AlcoholImpairedDrivingDeaths14_single.py / ParDo_AlcoholImpairedDrivingDeaths14_cluster.py
+-ParDo_AlcoholImpairedDrivingDeaths15_single.py / ParDo_AlcoholImpairedDrivingDeaths15_cluster.py
+-ParDo_AlcoholSales14_single.py / ParDo_AlcoholSales14_cluster.py
+-ParDo_AlcoholSales15_single.py / ParDo_AlcoholSales15_cluster.py
+
+---Query #2
+Results: Table containing number of revocations and % alcohol impaired deaths from counties were 85%, 95%, and 99% deaths caused by alcohol impaired driving in 2014 and 2015. 
+
+Type of transformations required by the data:
+ -Use ParDo to normalize county name and only select 2014 and 2015 revocations.
+
+Python scripts:
+-ParDo_AlcoholImpairedDrivingDeaths14_single.py / ParDo_AlcoholImpairedDrivingDeaths14_cluster.py
+-ParDo_AlcoholImpairedDrivingDeaths15_single.py / ParDo_AlcoholImpairedDrivingDeaths15_cluster.py
+-ParDo_DriverLicenseRevocations_single.py / ParDo_DriverLicenseRevocations_cluster.py
+
+---Query #3
+Results: Compare volume of alcohol sold and number of revocations by county in 2014 and 2015 to see if there is a correlation.
+
+Type of transformations required by the data: 
+-Use ParDo to normalize the County names.
+-Use ParDo to only select 2014 and 2015 revocations.
+-Calculate total volume of alcohol sold and number of stores by county in 2014 and 2015.
+
+Python scripts:
+-ParDo_AlcoholSales14_single.py/ParDo_AlcoholSales14_cluster.py
+-ParDo_AlcoholSales15_single.py/ParDo_AlcoholSales15_cluster.py
+-ParDo_DriverLicenseRevocations_single.py/ParDo_DriverLicenseRevocations_cluster.py
+
+---Query #4
+Results: Compare volume of alcohol sold and alcohol impaired driving deaths by county in 2014 and 2015 to see if there is a correlation.
+
+Type of transformations required by the data: 
+-Use ParDo to normalize the County names.
+-Calculate total volume of alcohol and total stores by county in 2014 and 2015.
+
+Python scripts:
+-ParDo_AlcoholSales14_single.py/ParDo_AlcoholSales14_cluster.py
+-ParDo_AlcoholSales15_single.py/ParDo_AlcoholSales15_cluster.py
+-ParDo_AlcoholImpairedDrivingDeaths14_single.py/ParDo_AlcoholImpairedDrivingDeaths14_cluster.py
+-ParDo_AlcoholImpairedDrivingDeaths15_single.py/ParDo_AlcoholImpairedDrivingDeaths15_cluster.py
+
+---Query #5
+Results: Determine which counties sold above 85%, 90%, and 95% alcohol in 2014 and 2015; determine which counties had 85%, 90%, and 95% driving lisence revocations in 2014 and 2015; and determine which counties had 85%, 90%, and 95% alcohol impraired deaths in 2014 and 2015. After determining these counties, compare between 2014 and 2015 results and across datasets in each year. 
+
+Python scripts:
+-ParDo_AlcoholSales14_single.py/ParDo_AlcoholSales14_cluster.py
+-ParDo_AlcoholSales15_single.py/ParDo_AlcoholSales15_cluster.py
+-ParDo_AlcoholImpairedDrivingDeaths14_single.py/ParDo_AlcoholImpairedDrivingDeaths14_cluster.py
+-ParDo_AlcoholImpairedDrivingDeaths15_single.py/ParDo_AlcoholImpairedDrivingDeaths15_cluster.py
+-ParDo_DriverLicenseRevocations_single.py/ParDo_DriverLicenseRevocations_cluster.py
+
